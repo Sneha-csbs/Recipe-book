@@ -1,0 +1,71 @@
+ HTML Code:
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Recipe Book</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <h1>Recipe Book</h1>
+  <input type="text" id="filter" placeholder="Filter recipes...">
+  <div id="recipes">
+    <div class="recipe" data-category="dessert"><h3>Chocolate Cake</h3><p>Rich chocolate dessert.</p></div>
+    <div class="recipe" data-category="main"><h3>Grilled Chicken</h3><p>Perfectly spiced chicken.</p></div>
+  </div>
+  <script src="script.js"></script>
+ </body>
+ </html>
+ CSS Code:
+ body { font-family: Arial; padding: 20px; background: #f9f9f9; }
+ input { width: 100%; padding: 10px; margin-bottom: 10px; }
+ .recipe { background: white; padding: 10px; margin: 10px 0; box-shadow: 0 0 5px #ccc; }
+ JavaScript Code:
+ document.getElementById('filter').addEventListener('input', function() {
+  let val = this.value.toLowerCase();
+  document.querySelectorAll('.recipe').forEach(recipe => {
+    recipe.style.display = recipe.textContent.toLowerCase().includes(val) ? '' : 'none';
+  });
+ });
+
+contact manager
+ HTML Code:
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <h1>Contact Manager</h1>
+  <input type="text" id="name" placeholder="Name">
+  <input type="text" id="phone" placeholder="Phone">
+  <button onclick="addContact()">Add</button>
+  <ul id="contacts"></ul>
+Project 3 & 4 - Full HTML, CSS, JS & Git Implementation
+  <script src="script.js"></script>
+ </body>
+ </html>
+ CSS Code:
+ body { font-family: Arial; padding: 20px; }
+ input, button { margin: 5px; padding: 10px; }
+ ul { list-style: none; padding: 0; }
+ li { background: #eee; margin: 5px 0; padding: 10px; display: flex; justify-content: space-between; }
+ JavaScript Code:
+ function addContact() {
+  let name = document.getElementById('name').value;
+  let phone = document.getElementById('phone').value;
+  if (name && phone) {
+    let li = document.createElement('li');
+    li.textContent = `${name} - ${phone}`;
+    let btn = document.createElement('button');
+    btn.textContent = 'Delete';
+    btn.onclick = () => li.remove();
+    li.appendChild(btn);
+    document.getElementById('contacts').appendChild(li);
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+  }
+ }
+ 
